@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{title}}</mat-card-title>
+        <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form fxLayout="column" fxLayoutAlign="stretch center" [formGroup]="form" (ngSubmit)="submit(form,$event)">
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="用户名" formControlName="login">
+                <mat-error>必填字段</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="密码" formControlName="password">
+                <mat-error>密码错误</mat-error>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="end stretch" class="full-width">
+                <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">登陆</button>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <div fxLayout="row" fxLayoutAlign="end stretch">
+            <a mat-button routerLink="/auth/register">{{btnText}}</a>
+            <a mat-button routerLink="/auth/forgot">{{forgotText}}</a>
+        </div>
+    </mat-card-actions>
+</mat-card>
